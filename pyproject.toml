@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wormstrike"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "requests>=2.31.0",
+    "paramiko>=3.4.0",
+    "pywinrm>=0.4.3",
+    "cryptography>=41.0.0",
+]
+
+[project.scripts]
+wormstrike   = "main:main"
+build-stubs  = "build_stubs:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+exclude = ["installers*", ".venv*", "__pycache__*"]
+
+[tool.setuptools]
+py-modules = ["main", "banner", "build_stubs"]

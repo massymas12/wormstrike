@@ -1,0 +1,31 @@
+# wormstrike configuration file
+# Copy to wormstrike.toml and fill in your values.
+# CLI arguments always override values set here.
+
+[general]
+cid      = "ABC123-DEF456"      # CrowdStrike Customer ID (required)
+target   = "10.0.1.0/24"       # CIDR range to scan
+auto     = false                # set true to skip per-host prompts
+obfuscate = "none"              # none | light | heavy | base64
+
+[winrm]
+username = "CORP\\administrator"
+password = "your-windows-password"
+domain   = "CORP"               # optional — auto-formats username
+auth     = "ntlm"               # ntlm | kerberos | basic
+
+[ssh]
+username = "root"
+password = "your-linux-password"
+# key    = "C:\\Users\\you\\.ssh\\id_rsa"   # takes priority over password
+
+[psexec]
+# path = "C:\\Tools\\PsExec64.exe"   # enables SMB fallback transport
+
+[server]
+port = 8443
+tls  = true
+# url = "https://deploy.internal"    # use an existing server instead of embedded
+
+[scan]
+workers = 100
